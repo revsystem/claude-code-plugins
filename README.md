@@ -1,4 +1,4 @@
-# Claude Code Plugins - 技術記事レビューシステム
+# Claude Code Plugins - 技術記事レビュープラグイン
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
