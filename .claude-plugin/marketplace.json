@@ -1,0 +1,38 @@
+{
+  "name": "document-and-code-reviewer",
+  "owner": {
+    "name": "@revsystem",
+    "email": "tsuyoshi@revsystem.net"
+  },
+  "plugins": [
+    {
+      "name": "document-reviewer",
+      "source": "./",
+      "description": "Review blog articles.",
+      "version": "0.0.1",
+      "license": "MIT",
+      "author": {
+        "name": "@revsystem",
+        "email": "tsuyoshi@rev-system.net"
+      },
+      "keywords": ["documentation", "technical-writing"],
+      "category": "productivity",
+      "strict": false,
+      "commands": [
+        "./commands/document-reviewer.md"
+      ],
+      "agents": [
+        "./agents/article-reviewer.md",
+        "./agents/official-document-checker.md"
+      ],
+      "mcpServers": [
+        "./mcps/aws-knowlege-mcp-server.json",
+        "./mcps/aws-documentation-mcp-server.json"
+      ]
+    }
+  ],
+  "metadata": {
+    "description": "Provide a plugins for reviewing the documents and code.",
+    "version": "0.0.1"
+  }
+}
