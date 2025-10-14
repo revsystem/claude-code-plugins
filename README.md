@@ -33,19 +33,30 @@ Qiita向け技術記事の包括的レビューを提供するClaude Code Plugin
 
 ### インストール手順
 
-A. **リポジトリをクローンする場合**
+#### Githubマーケットプレイスを追加する場合
+1. **Githubリポジトリにあるマーケットプレイスを追加する**
+```bash
+/plugin marketplace add revsystem/claude-code-plugins
+```
+
+2. **プラグインをインストールする**
+```bash
+/plugin install document-reviewer@document-and-code-reviewer
+```
+
+#### ローカルマーケットプレイスを追加する場合
+1. **リポジトリをクローンする**
 ```bash
 git clone https://github.com/revsystem/claude-code-plugins.git
 cd claude-code-plugins
 ```
 
-B. **ローカルマーケットプレイスとして追加する場合**
+2. **ローカルマーケットプレイスとして追加**
 ```bash
-claude
 /plugin marketplace add ./claude-code-plugins
 ```
 
-**プラグインをインストール**
+3. **プラグインをインストール**
 ```bash
 /plugin install  document-reviewer@document-and-code-reviewer
 ```
