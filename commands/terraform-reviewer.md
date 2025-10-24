@@ -55,28 +55,28 @@ model: inherit
 ### 基本的な使用方法
 
 ```bash
-/terraform-reviewer
+/terraform-code-reviewer
 ```
 Terraformコード全体を包括的にレビューします。
 
 ### 特定のファイルをレビュー
 
 ```bash
-/terraform-reviewer --file main.tf
+/terraform-code-reviewer --file main.tf
 ```
 指定したTerraformファイルのみを重点的にレビューします。
 
 ### 特定の観点でレビュー
 
 ```bash
-/terraform-reviewer --focus security
+/terraform-code-reviewer --focus security
 ```
 セキュリティに特化したレビューを実行します（security/cost/performance/best-practices）。
 
 ### レビューレベルの指定
 
 ```bash
-/terraform-reviewer --level strict
+/terraform-code-reviewer --level strict
 ```
 より厳格なレビューを実行します（strict/normal/quick）。
 

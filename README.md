@@ -1,29 +1,44 @@
-# Claude Code Plugins - 技術記事レビュープラグイン
+# Claude Code Plugins - ドキュメント・コードレビュープラグイン
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.0.1-orange.svg)](.claude-plugin/marketplace.json)
 
-Qiita向け技術記事の包括的レビューを提供するClaude Code Pluginsです。文章校正とAWS公式ドキュメント検証を組み合わせ、高品質な技術記事の作成をサポートします。
+技術記事とTerraformコードの包括的レビューを提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビューを組み合わせ、高品質な技術文書とコードの作成をサポートします。
 
-## 主な機能
+## プラグイン一覧
 
-### 文章校正エージェント
+### 1. document-reviewer - 技術記事レビュープラグイン
+
+#### 文章校正エージェント
 - **日本語の自然さ**: 読みやすく自然な日本語表現への修正
 - **技術用語の統一**: 適切な表記と用語の一貫性確保
 - **構成の最適化**: 論理的な文章構造と段落構成の改善
 - **Qiita Markdown記法**: Qiitaの記法に準拠した記述
 
-### AWS公式ドキュメント検証エージェント
+#### AWS公式ドキュメント検証エージェント
 - **技術的正確性**: AWS公式ドキュメントとの照合
 - **仕様の検証**: エンドポイント、パラメータ、レスポンス形式など仕様の確認
 - **サービス名の正確性**: 正式なサービス名と表記の検証
 - **料金・制限事項**: 最新の料金体系と制限事項の確認
 
-### 統合レビューコマンド
+#### 統合レビューコマンド
 - **包括的レビュー**: 2つのエージェントを連携した総合的なレビュー
 - **優先度別フィードバック**: 重大・推奨・提案の3段階で整理
 - **具体的な修正提案**: 実際の運用で役立つ改善案を提供
+
+### 2. terraform-code-reviewer - Terraformコードレビュープラグイン
+
+#### Terraformコードレビューエージェント
+- **セキュリティレビュー**: セキュリティグループ、IAM、暗号化設定の検証
+- **ベストプラクティス**: Terraformの公式ガイドラインに基づく検証
+- **パフォーマンス最適化**: リソース設定、データソース使用の最適化
+- **コスト最適化**: リソースサイズ、ライフサイクル設定の検証
+
+#### 包括的レビューコマンド
+- **多角的レビュー**: セキュリティ、パフォーマンス、コスト、ベストプラクティスの4観点
+- **段階的改善提案**: 優先度に基づいた実装可能な改善ロードマップ
+- **具体的なコード修正**: 実際のコード例を含む修正提案
 
 ## インストール
 
@@ -40,8 +55,15 @@ Qiita向け技術記事の包括的レビューを提供するClaude Code Plugin
 ```
 
 2. **プラグインをインストールする**
+
+**技術記事レビュープラグイン**
 ```bash
 /plugin install document-reviewer@document-and-code-reviewer
+```
+
+**Terraformコードレビュープラグイン**
+```bash
+/plugin install terraform-code-reviewer@document-and-code-reviewer
 ```
 
 #### ローカルマーケットプレイスを追加する場合
@@ -57,13 +79,22 @@ cd claude-code-plugins
 ```
 
 3. **プラグインをインストール**
+
+**技術記事レビュープラグイン**
 ```bash
-/plugin install  document-reviewer@document-and-code-reviewer
+/plugin install document-reviewer@document-and-code-reviewer
+```
+
+**Terraformコードレビュープラグイン**
+```bash
+/plugin install terraform-code-reviewer@document-and-code-reviewer
 ```
 
 ## 使用方法
 
-### 基本的な使用方法
+### 1. document-reviewer - 技術記事レビュー
+
+#### 基本的な使用方法
 
 ```bash
 # 記事全体をレビュー
@@ -80,7 +111,33 @@ cd claude-code-plugins
 /document-reviewer --level strict @your_article.md
 ```
 
+### 2. terraform-code-reviewer - Terraformコードレビュー
+
+#### 基本的な使用方法
+
+```bash
+# Terraformコード全体をレビュー
+/terraform-code-reviewer
+```
+
+```bash
+# 特定のファイルをレビュー
+/terraform-code-reviewer --file main.tf
+```
+
+```bash
+# 特定の観点でレビュー (security/cost/performance/best-practices)
+/terraform-code-reviewer --focus security
+```
+
+```bash
+# レビューレベルの指定 (strict/normal/quick)
+/terraform-code-reviewer --level strict
+```
+
 ### 出力例
+
+#### document-reviewer の出力例
 
 ```
 📊 レビュー結果サマリー
@@ -103,6 +160,28 @@ cd claude-code-plugins
 - 改善理由: より簡潔で理解しやすい表現
 ```
 
+#### terraform-code-reviewer の出力例
+
+```
+📊 Terraformコードレビュー結果サマリー
+- 重大な問題: 2件
+- 推奨修正: 8件
+- 追加提案: 5件
+- 総合評価: B+ (良好、セキュリティとコスト最適化推奨)
+
+🔴 重大な問題
+❌ **セキュリティリスク**: セキュリティグループが0.0.0.0/0に開放
+- 現在の設定: ingress { from_port = 22; to_port = 22; cidr_blocks = ["0.0.0.0/0"] }
+- 推奨設定: 特定のIPアドレス範囲のみ許可
+- 修正理由: セキュリティリスクが高い設定
+
+🟡 推奨修正
+⚠️ **コスト最適化**: インスタンスタイプの見直し
+- 現在の設定: t3.large (2 vCPU, 8GB RAM)
+- 推奨設定: t3.medium (2 vCPU, 4GB RAM)
+- 期待効果: 月額コスト約30%削減
+```
+
 ## アーキテクチャ
 
 ### プラグイン構成
@@ -113,12 +192,15 @@ claude-code-plugins/
 │   └── marketplace.json          # マーケットプレイス設定
 ├── agents/
 │   ├── article-reviewer.md       # 文章校正エージェント
-│   └── official-document-checker.md # AWS公式ドキュメント検証エージェント
+│   ├── official-document-checker.md # AWS公式ドキュメント検証エージェント
+│   └── terraform-reviewer.md     # Terraformコードレビューエージェント
 ├── commands/
-│   └── document-reviewer.md      # 統合レビューコマンド
+│   ├── document-reviewer.md      # 技術記事統合レビューコマンド
+│   └── terraform-reviewer.md     # Terraformコードレビューコマンド
 └── mcps/
     ├── aws-knowledge-mcp-server.json
-    └── aws-documentation-mcp-server.json
+    ├── aws-documentation-mcp-server.json
+    └── aws-terraform-mcp-server.json
 ```
 
 ## 設定
@@ -135,25 +217,31 @@ claude-code-plugins/
 
 - `agents/article-reviewer.md`: 文章校正ルールの調整
 - `agents/official-document-checker.md`: 技術検証ルールの調整
+- `agents/terraform-reviewer.md`: Terraformコードレビュールールの調整
 
 ## 対応技術
 
-### 文章校正
+### document-reviewer
+#### 文章校正
 - 日本語の自然さと読みやすさ
 - 技術用語の適切な表記
 - Qiita Markdown記法
 - 文章構造と論理性
 
-### AWS公式ドキュメント検証
+#### AWS公式ドキュメント検証
 - AWS サービス名とAPI仕様
 - 料金情報と制限事項
 - セキュリティ設定
 - 最新の推奨事項
 
+### terraform-code-reviewer
+#### Terraformコードレビュー
+- セキュリティ設定（セキュリティグループ、IAM、暗号化）
+- ベストプラクティス（命名規則、モジュール化、状態管理）
+- パフォーマンス最適化（リソースサイズ、データソース使用）
+- コスト最適化（ライフサイクル設定、リザーブドインスタンス）
+
 ## ライセンス
 
 このプロジェクトは [MIT License](LICENSE) の下で公開されています。
 
----
-
-**技術記事の品質向上を支援するClaude Code Pluginsです。** 🚀
