@@ -40,6 +40,9 @@
 - **段階的改善提案**: 優先度に基づいた実装可能な改善ロードマップ
 - **具体的なコード修正**: 実際のコード例を含む修正提案
 
+## プラグインが使用するモデル
+Claude Codeと同じモデルを使用します。Sonnet 4.5を推奨します。
+
 ## インストール
 
 ### 前提条件
@@ -72,7 +75,7 @@
 ```
 
 `document-and-code-reviewer`を選択してEnterキーを押します。
-```
+```bash
 ╭─────────────────────────────╮
 │ Manage plugins                                           │
 │ Select a marketplace to manage plugins:                  │
@@ -84,7 +87,7 @@
 
 `document-reviewer`を選択してEnterキーを押します。
 
-```
+```bash
 ╭─────────────────────────────╮
 │ document-and-code-reviewer › Manage plugins              │
 │                                                          │
@@ -98,7 +101,7 @@
 
 `Enable plugin`を選択してEnterキーを押します。
 
-```
+```bash
 ╭─────────────────────────────╮
 │ ❯ Enable plugin                                          │
 │   Mark for update                                        │
@@ -111,7 +114,7 @@
 
 同様に`terraform-code-reviewer`も有効化します。
 
-```
+```bash
 ╭─────────────────────────────╮
 │ ❯ Enable plugin                                          │
 │   Mark for update                                        │
@@ -192,6 +195,15 @@ cd claude-code-plugins
 ```bash
 # レビューレベルの指定 (strict/normal/quick)
 /terraform-code-reviewer --level strict
+```
+
+レビューの目的や観点を指定することで、より詳細なレビューが得られます。
+
+```bash
+# レビュー対象のファイルを指定
+/terraform-code-reviewer --level strict Terraformのコードをレビューして。ALBのセキュリティレベルを向上させたい。
+```
+
 ```
 
 ### 出力例
