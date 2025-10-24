@@ -66,6 +66,62 @@
 /plugin install terraform-code-reviewer@document-and-code-reviewer
 ```
 
+3. **プラグインを有効化する**
+```bash
+/plugin enable
+```
+
+`document-and-code-reviewer`を選択してEnterキーを押します。
+```
+╭─────────────────────────────╮
+│ Manage plugins                                           │
+│ Select a marketplace to manage plugins:                  │
+│                                                          │
+│ ❯ document-and-code-reviewer                             │
+│   2 plugins installed · 2 disabled                       │
+╰─────────────────────────────╯
+```
+
+`document-reviewer`を選択してEnterキーを押します。
+
+```
+╭─────────────────────────────╮
+│ document-and-code-reviewer › Manage plugins              │
+│                                                          │
+│ ❯ ◯ document-reviewer                                   │
+│     Review blog articles. · v0.0.1                       │
+│                                                          │
+│   ◯ terraform-code-reviewer                             │
+│     Review Terraform code. · v0.0.1                      │
+╰─────────────────────────────╯
+```
+
+`Enable plugin`を選択してEnterキーを押します。
+
+```
+╭─────────────────────────────╮
+│ ❯ Enable plugin                                          │
+│   Mark for update                                        │
+│   Mark for uninstallation                                │
+│   Update now                                             │
+│   Uninstall now                                          │
+│   Back to plugin list                                    │
+╰─────────────────────────────╯
+```
+
+同様に`terraform-code-reviewer`も有効化します。
+
+```
+╭─────────────────────────────╮
+│ ❯ Enable plugin                                          │
+│   Mark for update                                        │
+│   Mark for uninstallation                                │
+│   Update now                                             │
+│   Uninstall now                                          │
+│   Back to plugin list                                    │
+╰─────────────────────────────╯
+```
+
 #### ローカルマーケットプレイスを追加する場合
 1. **リポジトリをクローンする**
 ```bash
@@ -89,6 +145,9 @@ cd claude-code-plugins
 ```bash
 /plugin install terraform-code-reviewer@document-and-code-reviewer
 ```
+
+4. **プラグインを有効化する**
+前述の、Githubマーケットプレイスを追加する場合の手順を参照してください。
 
 ## 使用方法
 
