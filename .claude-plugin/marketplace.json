@@ -29,6 +29,31 @@
         "./mcps/aws-knowlege-mcp-server.json",
         "./mcps/aws-documentation-mcp-server.json"
       ]
+    },
+    {
+      "name": "terraform-code-reviewer",
+      "source": "./",
+      "description": "Review Terraform code.",
+      "version": "0.0.1",
+      "license": "MIT",
+      "author": {
+        "name": "@revsystem",
+        "email": "tsuyoshi@rev-system.net"
+      },
+      "keywords": ["terraform", "code", "review"],
+      "category": "development",
+      "strict": false,
+      "commands": [
+        "./commands/terraform-reviewer.md"
+      ],
+      "agents": [
+        "./agents/terraform-reviewer.md"
+      ],
+      "mcpServers": [
+        "./mcps/aws-terraform-mcp-server.json",
+        "./mcps/aws-knowlege-mcp-server.json",
+        "./mcps/aws-documentation-mcp-server.json"
+      ]
     }
   ],
   "metadata": {
