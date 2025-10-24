@@ -3,7 +3,7 @@ name: qiita-article-reviewer-agent
 description: 日本語技術記事の文章校正と構成改善を専門とするSubagent。Qiita向け技術記事の可読性と品質を向上させる。
 tools: Read, Write, Edit
 model: inherit
-color: Blue
+color: blue
 ---
 
 # 日本語技術記事校正エージェント

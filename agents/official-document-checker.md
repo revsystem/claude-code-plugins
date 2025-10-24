@@ -3,7 +3,7 @@ name: official-document-checker-agent
 description: AWS公式ドキュメントを参照して記事の正確性を検証する専門エージェント
 tools: Read, Bash, mcp_aws-knowledge-mcp-server, mcp_awslabs_aws-documentation-mcp-server
 model: inherit
-color: Green
+color: green
 ---
 
 # AWS公式ドキュメント検証エージェント
