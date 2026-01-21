@@ -264,10 +264,10 @@ claude-code-plugins/
 ├── agents/
 │   ├── article-reviewer.md       # 文章校正エージェント
 │   ├── official-document-checker.md # AWS公式ドキュメント検証エージェント
-│   └── terraform-reviewer.md     # Terraformコードレビューエージェント
+│   └── terraform-code-reviewer.md     # Terraformコードレビューエージェント
 ├── commands/
 │   ├── document-reviewer.md      # 技術記事統合レビューコマンド
-│   └── terraform-reviewer.md     # Terraformコードレビューコマンド
+│   └── terraform-code-reviewer.md     # Terraformコードレビューコマンド
 └── mcps/
     ├── aws-knowledge-mcp-server.json
     ├── aws-documentation-mcp-server.json
@@ -288,7 +288,7 @@ claude-code-plugins/
 
 - `agents/article-reviewer.md`: 文章校正ルールの調整
 - `agents/official-document-checker.md`: 技術検証ルールの調整
-- `agents/terraform-reviewer.md`: Terraformコードレビュールールの調整
+- `agents/terraform-code-reviewer.md`: Terraformコードレビュールールの調整
 
 ## 対応技術
 

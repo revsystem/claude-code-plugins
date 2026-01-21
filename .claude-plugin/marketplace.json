@@ -44,10 +44,10 @@
       "category": "development",
       "strict": false,
       "commands": [
-        "./commands/terraform-reviewer.md"
+        "./commands/terraform-code-reviewer.md"
       ],
       "agents": [
-        "./agents/terraform-reviewer.md"
+        "./agents/terraform-code-reviewer.md"
       ],
       "mcpServers": [
         "./mcps/aws-terraform-mcp-server.json",

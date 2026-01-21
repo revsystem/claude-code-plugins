@@ -7,7 +7,7 @@ model: inherit
 
 # Terraform コード包括レビューコマンド
 
-このコマンドは、`terraform-reviewer-agent`と連携してTerraformコードの包括的なレビューを実行し、セキュリティ、ベストプラクティス、パフォーマンス、コスト最適化の観点から実用的な改善提案を提供します。
+このコマンドは、`terraform-code-reviewer-agent`と連携してTerraformコードの包括的なレビューを実行し、セキュリティ、ベストプラクティス、パフォーマンス、コスト最適化の観点から実用的な改善提案を提供します。
 
 ## レビュープロセス
 
@@ -137,7 +137,7 @@ Terraformコード全体を包括的にレビューします。
 
 ## エージェント連携
 
-### terraform-reviewer-agent
+### terraform-code-reviewer-agent
 
 - **担当**: Terraformコードの詳細分析と改善提案
 - **対象**: セキュリティ、ベストプラクティス、パフォーマンス、コスト最適化
