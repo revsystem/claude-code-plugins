@@ -9,7 +9,7 @@
       "name": "document-reviewer",
       "source": "./",
       "description": "Review blog articles.",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -34,7 +34,7 @@
       "name": "terraform-code-reviewer",
       "source": "./",
       "description": "Review Terraform code.",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -58,6 +58,6 @@
   ],
   "metadata": {
     "description": "Provide a plugins for reviewing the documents and code.",
-    "version": "0.0.1"
+    "version": "0.0.2"
   }
 }

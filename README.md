@@ -2,7 +2,7 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.1-orange.svg)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/version-0.0.2-orange.svg)](.claude-plugin/marketplace.json)
 
 技術記事とTerraformコードの包括的レビューを提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビューを組み合わせ、高品質な技術文書とコードの作成をサポートします。
 
@@ -92,10 +92,10 @@ Claude Codeと同じモデルを使用します。Sonnet 4.5を推奨します�
 │ document-and-code-reviewer › Manage plugins              │
 │                                                          │
 │ ❯ ◯ document-reviewer                                   │
-│     Review blog articles. · v0.0.1                       │
+│     Review blog articles. · v0.0.2                       │
 │                                                          │
 │   ◯ terraform-code-reviewer                             │
-│     Review Terraform code. · v0.0.1                      │
+│     Review Terraform code. · v0.0.2                      │
 ╰─────────────────────────────╯
 ```
 
