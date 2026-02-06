@@ -2,7 +2,7 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.2-orange.svg)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/version-0.0.3-orange.svg)](.claude-plugin/marketplace.json)
 
 技術記事とTerraformコードの包括的レビューを提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビューを組み合わせ、高品質な技術文書とコードの作成をサポートします。
 
