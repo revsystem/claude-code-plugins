@@ -8,8 +8,8 @@
     {
       "name": "document-reviewer",
       "source": "./",
-      "description": "Review blog articles.",
-      "version": "0.0.2",
+      "description": "Review blog articles with terminology standards and AWS documentation verification.",
+      "version": "0.0.3",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -57,7 +57,7 @@
     }
   ],
   "metadata": {
-    "description": "Provide a plugins for reviewing the documents and code.",
-    "version": "0.0.2"
+    "description": "Provide plugins for reviewing documents and code with terminology standards and official documentation verification.",
+    "version": "0.0.3"
   }
 }
