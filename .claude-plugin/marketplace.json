@@ -26,7 +26,7 @@
         "./agents/official-document-checker.md"
       ],
       "mcpServers": [
-        "./mcps/aws-knowlege-mcp-server.json",
+        "./mcps/aws-knowledge-mcp-server.json",
         "./mcps/aws-documentation-mcp-server.json"
       ]
     },
@@ -34,7 +34,7 @@
       "name": "terraform-code-reviewer",
       "source": "./",
       "description": "Review Terraform code.",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -51,7 +51,7 @@
       ],
       "mcpServers": [
         "./mcps/aws-terraform-mcp-server.json",
-        "./mcps/aws-knowlege-mcp-server.json",
+        "./mcps/aws-knowledge-mcp-server.json",
         "./mcps/aws-documentation-mcp-server.json"
       ]
     }

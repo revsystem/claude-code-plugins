@@ -260,18 +260,20 @@ cd claude-code-plugins
 ```console
 claude-code-plugins/
 ├── .claude-plugin/
-│   └── marketplace.json          # マーケットプレイス設定
+│   └── marketplace.json               # マーケットプレイス設定
 ├── agents/
-│   ├── article-reviewer.md       # 文章校正エージェント
-│   ├── official-document-checker.md # AWS公式ドキュメント検証エージェント
-│   └── terraform-code-reviewer.md     # Terraformコードレビューエージェント
+│   ├── article-reviewer.md            # 文章校正エージェント
+│   ├── official-document-checker.md   # AWS公式ドキュメント検証エージェント
+│   ├── terraform-code-reviewer.md     # Terraformコードレビューエージェント
+│   └── resources/
+│       └── terminology-standards.md   # 用語規約リソース
 ├── commands/
-│   ├── document-reviewer.md      # 技術記事統合レビューコマンド
+│   ├── document-reviewer.md           # 技術記事統合レビューコマンド
 │   └── terraform-code-reviewer.md     # Terraformコードレビューコマンド
 └── mcps/
-    ├── aws-knowledge-mcp-server.json
-    ├── aws-documentation-mcp-server.json
-    └── aws-terraform-mcp-server.json
+    ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
+    ├── aws-knowledge-mcp-server.json       # AWSナレッジベース検索
+    └── aws-terraform-mcp-server.json      # Terraform MCP Server
 ```
 
 ## 設定
@@ -289,6 +291,7 @@ claude-code-plugins/
 - `agents/article-reviewer.md`: 文章校正ルールの調整
 - `agents/official-document-checker.md`: 技術検証ルールの調整
 - `agents/terraform-code-reviewer.md`: Terraformコードレビュールールの調整
+- `agents/resources/terminology-standards.md`: 用語規約の調整
 
 ## 対応技術
 
