@@ -1,6 +1,6 @@
 {
     "mcpServers": {
-        "awslabs.terraform-mcp-server": {
+        "aws-terraform-mcp-server": {
             "command": "uvx",
             "args": ["awslabs.terraform-mcp-server@latest"],
             "env": {

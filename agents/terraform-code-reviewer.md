@@ -1,8 +1,8 @@
 ---
 name: terraform-code-reviewer-agent
 description: Terraformコードの詳細分析と改善提案を行うエージェント。セキュリティ、ベストプラクティス、パフォーマンス、コスト最適化の観点から包括的なレビューを実行し、実装可能な具体的な改善提案を提供。
-tools: Read, Write, Edit, Codebase Search, Web Search
-model: claude-3-5-sonnet-20241022
+tools: Read, Write, Edit, mcp_aws-terraform-mcp-server
+model: inherit
 color: red
 ---
 

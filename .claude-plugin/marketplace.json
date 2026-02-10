@@ -2,7 +2,7 @@
   "name": "document-and-code-reviewer",
   "owner": {
     "name": "@revsystem",
-    "email": "tsuyoshi@revsystem.net"
+    "email": "tsuyoshi@rev-system.net"
   },
   "plugins": [
     {
@@ -53,6 +53,27 @@
         "./mcps/aws-terraform-mcp-server.json",
         "./mcps/aws-knowledge-mcp-server.json",
         "./mcps/aws-documentation-mcp-server.json"
+      ]
+    },
+    {
+      "name": "aws-cost-analyst",
+      "source": "./",
+      "description": "AWS cost analysis, investigation, and cost optimization.",
+      "version": "0.0.3",
+      "license": "MIT",
+      "author": {
+        "name": "@revsystem",
+        "email": "tsuyoshi@rev-system.net"
+      },
+      "keywords": ["aws", "cost", "finops"],
+      "category": "development",
+      "strict": false,
+      "agents": [
+        "./agents/aws-cost-analyst.md"
+      ],
+      "mcpServers": [
+        "./mcps/aws-cost-explorer-mcp-server.json",
+        "./mcps/aws-pricing-mcp-server.json"
       ]
     }
   ],
