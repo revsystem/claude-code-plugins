@@ -7,8 +7,8 @@
 			],
 			"env": {
 			"FASTMCP_LOG_LEVEL": "ERROR",
-			"AWS_PROFILE": "your-aws-profile",
-			"AWS_REGION": "us-east-1"
+			"AWS_PROFILE": "${AWS_PROFILE:-default}",
+			"AWS_REGION": "${AWS_REGION:-us-east-1}"
 			},
 			"disabled": false,
 			"autoApprove": []

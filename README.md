@@ -2,9 +2,9 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.3-orange.svg)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/version-0.0.4-orange.svg)](.claude-plugin/marketplace.json)
 
-技術記事とTerraformコードの包括的レビュー、およびAWSコスト分析を提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビュー、AWSコスト分析・最適化を組み合わせ、高品質な技術文書とインフラの作成をサポートします。
+技術記事レビュー、Terraformコードレビュー、AWSコスト分析、技術ドキュメント検索を提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビュー、AWSコスト最適化、最新技術情報の調査を組み合わせ、高品質な技術文書とインフラの作成をサポートします。
 
 ## プラグイン一覧
 
@@ -48,17 +48,25 @@
 - **コスト最適化**: Reserved Instances、Savings Plans、Spot活用の提案
 - **FinOpsベストプラクティス**: タグベース分析、リージョン別料金比較
 
+### 4. tech-docs-searcher - 技術ドキュメント検索プラグイン
+
+#### 技術ドキュメント検索エージェント
+- **最新ドキュメント検索**: フレームワーク、ライブラリ、クラウドサービスの最新ドキュメントを検索
+- **AWS公式情報**: AWS Documentation / Knowledge MCPサーバーによる正確なAWS情報取得
+- **ベストプラクティス調査**: 実装パターン、推奨事項、アーキテクチャガイドを収集
+- **マルチソース検証**: 公式ドキュメント、GitHub、技術ブログから情報を収集・検証
+
 ## プラグインが使用するモデル
 
 - **document-reviewer / terraform-code-reviewer**: Claude Codeと同じモデルを使用します（`inherit`）。Sonnet 4.5を推奨します。
-- **aws-cost-analyst**: Sonnet を使用します（コスト効率を考慮）。
+- **aws-cost-analyst / tech-docs-searcher**: Sonnet を使用します（コスト効率を考慮）。
 
 ## インストール
 
 ### 前提条件
 - [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) がインストールされていること
 - uvxがインストールされていること
-- **aws-cost-analyst を使用する場合**: AWS CLIが設定済みで、Cost Explorer / Pricing API にアクセスできる `AWS_PROFILE` が必要
+- **aws-cost-analyst を使用する場合**: AWS CLIが設定済みで、Cost Explorer / Pricing API にアクセスできるプロファイルが必要（シェルの `AWS_PROFILE` 環境変数を自動参照）
 
 ### インストール手順
 
@@ -90,6 +98,12 @@
 /plugin install aws-cost-analyst@document-and-code-reviewer
 ```
 
+**技術ドキュメント検索プラグイン**
+
+```bash
+/plugin install tech-docs-searcher@document-and-code-reviewer
+```
+
 3. **プラグインを有効化する**
 
 ```bash
@@ -104,7 +118,7 @@
 │ Select a marketplace to manage plugins:                  │
 │                                                          │
 │ ❯ document-and-code-reviewer                             │
-│   3 plugins installed · 3 disabled                       │
+│   4 plugins installed · 4 disabled                       │
 ╰─────────────────────────────╯
 ```
 
@@ -115,13 +129,16 @@
 │ document-and-code-reviewer › Manage plugins              │
 │                                                          │
 │ ❯ ◯ document-reviewer                                   │
-│     Review blog articles. · v0.0.3                       │
+│     Review blog articles. · v0.0.4                       │
 │                                                          │
 │   ◯ terraform-code-reviewer                             │
-│     Review Terraform code. · v0.0.3                      │
+│     Review Terraform code. · v0.0.4                      │
 │                                                          │
 │   ◯ aws-cost-analyst                                    │
-│     AWS cost analysis. · v0.0.3                          │
+│     AWS cost analysis. · v0.0.4                          │
+│                                                          │
+│   ◯ tech-docs-searcher                                  │
+│     Technical docs search. · v0.0.4                      │
 ╰─────────────────────────────╯
 ```
 
@@ -171,46 +188,38 @@ cd claude-code-plugins
 /plugin install aws-cost-analyst@document-and-code-reviewer
 ```
 
+**技術ドキュメント検索プラグイン**
+
+```bash
+/plugin install tech-docs-searcher@document-and-code-reviewer
+```
+
 4. **プラグインを有効化する**
 
 前述の、Githubマーケットプレイスを追加する場合の手順を参照してください。
 
 ### AWS_PROFILE の設定（aws-cost-explorer / aws-pricing MCPサーバー）
 
-AWS Cost Explorer MCPサーバーと AWS Pricing MCPサーバーは AWS API にアクセスするため、`AWS_PROFILE` の設定が必要です。
+AWS Cost Explorer MCPサーバーと AWS Pricing MCPサーバーは AWS API にアクセスするため、`AWS_PROFILE` 環境変数の設定が必要です。
 
-プラグインインストール後、以下のMCPサーバー設定ファイルを編集して `AWS_PROFILE` を自分の環境に合わせてください。
+MCPサーバー設定ファイルは `${AWS_PROFILE:-default}` 構文を使用しており、シェル環境の `AWS_PROFILE` を自動的に参照します。未設定の場合は AWS CLI の `default` プロファイルが使用されます。
+
+**シェルで環境変数を設定する**
+
+```bash
+# ~/.bashrc や ~/.zshrc に追加
+export AWS_PROFILE=your-aws-profile
+```
+
+設定するプロファイルには、Cost Explorer API と Pricing API へのアクセス権限が必要です。
+
+**MCPサーバー設定ファイルの場所**（直接編集する場合）
 
 ```text
 ~/.claude/plugins/marketplaces/document-and-code-reviewer/mcps/
 ├── aws-cost-explorer-mcp-server.json
 └── aws-pricing-mcp-server.json
 ```
-
-**aws-cost-explorer-mcp-server.json**
-
-```json
-{
-  "env": {
-    "FASTMCP_LOG_LEVEL": "ERROR",
-    "AWS_PROFILE": "your-aws-profile"
-  }
-}
-```
-
-**aws-pricing-mcp-server.json**
-
-```json
-{
-  "env": {
-    "FASTMCP_LOG_LEVEL": "ERROR",
-    "AWS_PROFILE": "your-aws-profile",
-    "AWS_REGION": "us-east-1"
-  }
-}
-```
-
-`your-aws-profile` を、Cost Explorer と Pricing API へのアクセス権限を持つ AWS プロファイル名に置き換えてください。
 
 ## 使用方法
 
@@ -277,6 +286,24 @@ aws-cost-analyst はコマンドではなくエージェントとして動作し
 
 # コスト最適化の提案
 AWSコストの最適化ポイントを特定して、削減額を試算して。
+```
+
+### 4. tech-docs-searcher - 技術ドキュメント検索
+
+tech-docs-searcher はコマンドではなくエージェントとして動作します。自然言語でドキュメント検索を依頼してください。
+
+```bash
+# フレームワークの最新情報調査
+React 19 の最新機能とベストプラクティスを調べて。
+
+# AWS サービスのドキュメント検索
+AWS Lambda の cold start を最小化する方法を調べて。
+
+# API リファレンス調査
+Next.js の App Router の最新APIドキュメントを確認して。
+
+# 実装パターンの調査
+TypeScript で DDD を実装する際のベストプラクティスを調べて。
 ```
 
 ### 出力例
@@ -350,6 +377,24 @@ AWSコストの最適化ポイントを特定して、削減額を試算して�
 | RDS インスタンスサイズの見直し       | $120/月   | 中     | 中     |
 ```
 
+#### tech-docs-searcher の出力例
+
+```text
+## 調査対象: AWS Lambda cold start 最適化
+### バージョン/更新日
+AWS Lambda ドキュメント 2026年1月更新
+
+### 要点
+- SnapStart を有効化すると Java ランタイムの cold start を最大90%短縮可能
+- Provisioned Concurrency で事前にインスタンスをウォームアップ
+- 軽量ランタイム（Python、Node.js）は cold start が短い傾向
+- パッケージサイズの最小化が cold start 短縮に直結
+
+### 参照リンク
+- https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html
+- https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html
+```
+
 ## アーキテクチャ
 
 ### プラグイン構成
@@ -363,6 +408,7 @@ claude-code-plugins/
 │   ├── official-document-checker.md   # AWS公式ドキュメント検証エージェント
 │   ├── terraform-code-reviewer.md     # Terraformコードレビューエージェント
 │   ├── aws-cost-analyst.md            # AWSコスト分析エージェント
+│   ├── tech-docs-searcher.md          # 技術ドキュメント検索エージェント
 │   └── resources/
 │       └── terminology-standards.md   # 用語規約リソース
 ├── commands/
@@ -392,6 +438,7 @@ claude-code-plugins/
 - `agents/official-document-checker.md`: 技術検証ルールの調整
 - `agents/terraform-code-reviewer.md`: Terraformコードレビュールールの調整
 - `agents/aws-cost-analyst.md`: AWSコスト分析ルールの調整
+- `agents/tech-docs-searcher.md`: 技術ドキュメント検索ルールの調整
 - `agents/resources/terminology-standards.md`: 用語規約の調整
 
 ## 対応技術
@@ -425,6 +472,14 @@ claude-code-plugins/
 - コスト異常検知と原因調査
 - コスト最適化提案（RI、Savings Plans、Spot）
 - FinOpsベストプラクティスに基づく改善提案
+
+### tech-docs-searcher
+
+#### 技術ドキュメント検索
+- フレームワーク、ライブラリの最新ドキュメント検索
+- AWS サービスの公式ドキュメント取得（MCP サーバー連携）
+- GCP、Azure、SaaS 製品のドキュメント検索
+- ベストプラクティス、実装パターンの調査
 
 ## ライセンス
 

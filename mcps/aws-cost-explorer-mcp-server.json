@@ -5,7 +5,7 @@
 			"args": ["awslabs.cost-explorer-mcp-server@latest"],
 			"env": {
 			"FASTMCP_LOG_LEVEL": "ERROR",
-			"AWS_PROFILE": "your-aws-profile"
+			"AWS_PROFILE": "${AWS_PROFILE:-default}"
 			},
 			"disabled": false,
 			"autoApprove": []

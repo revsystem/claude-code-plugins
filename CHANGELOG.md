@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **MCP server integrations for cost analysis**:
   - aws-cost-explorer-mcp-server for cost data retrieval and forecasting
   - aws-pricing-mcp-server for pricing lookups and cost estimation
+- **tech-docs-searcher plugin**: Technical documentation search and research
+  - AWS Documentation and Knowledge MCP server integration for accurate AWS information
+  - Multi-source verification across official docs, GitHub, and technical blogs
+  - Support for frameworks, libraries, cloud services (AWS, GCP, Azure), and SaaS products
 
 ### Fixed
 - **Agent model field**: Changed invalid `model: claude` to `model: inherit` in 5 files
@@ -26,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Owner email**: Unified owner.email in marketplace.json to `tsuyoshi@rev-system.net`
 
 ### Changed
+- **MCP server env config**: Use `${AWS_PROFILE:-default}` and `${AWS_REGION:-us-east-1}` environment variable expansion instead of hardcoded placeholders in aws-cost-explorer-mcp-server.json and aws-pricing-mcp-server.json
 - Updated README.md with aws-cost-analyst plugin documentation
 - Updated marketplace.json to register aws-cost-analyst as independent plugin
 
