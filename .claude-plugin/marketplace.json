@@ -6,24 +6,6 @@
   },
   "plugins": [
     {
-      "name": "aws-shared-mcps",
-      "source": "./aws-shared-mcps",
-      "description": "Shared AWS MCP servers (Knowledge, Documentation) used by multiple plugins.",
-      "version": "0.0.5",
-      "license": "MIT",
-      "author": {
-        "name": "@revsystem",
-        "email": "tsuyoshi@rev-system.net"
-      },
-      "keywords": ["aws", "mcp", "shared"],
-      "category": "development",
-      "strict": false,
-      "mcpServers": [
-        "./mcps/aws-knowledge-mcp-server.json",
-        "./mcps/aws-documentation-mcp-server.json"
-      ]
-    },
-    {
       "name": "document-reviewer",
       "source": "./document-reviewer",
       "description": "Review blog articles with terminology standards and AWS documentation verification.",
@@ -42,6 +24,10 @@
       "agents": [
         "./agents/article-reviewer.md",
         "./agents/official-document-checker.md"
+      ],
+      "mcpServers": [
+        "./mcps/aws-knowledge-mcp-server.json",
+        "./mcps/aws-documentation-mcp-server.json"
       ]
     },
     {
@@ -64,7 +50,9 @@
         "./agents/terraform-code-reviewer.md"
       ],
       "mcpServers": [
-        "./mcps/aws-terraform-mcp-server.json"
+        "./mcps/aws-terraform-mcp-server.json",
+        "./mcps/aws-knowledge-mcp-server.json",
+        "./mcps/aws-documentation-mcp-server.json"
       ]
     },
     {
@@ -103,6 +91,10 @@
       "strict": false,
       "agents": [
         "./agents/tech-docs-searcher.md"
+      ],
+      "mcpServers": [
+        "./mcps/aws-knowledge-mcp-server.json",
+        "./mcps/aws-documentation-mcp-server.json"
       ]
     }
   ],
