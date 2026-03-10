@@ -24,7 +24,7 @@
 - LLM (llm, Llm ではない) - Large Language Model
 - Token（複数のトークンを指す場合以外は単数形を使用）
 - Chunking (chunking ではない) - データ処理技術
-- ベクター (ベクタ ではない) - vector、長音記号を使用
+- ベクトル (ベクタ、ベクター ではない) - vector、AWS 公式ドキュメントの表記に準拠
 - エンベディング - embedding、AI/ML 用語
 
 **AWS サービス:**
@@ -55,7 +55,7 @@
 - Slack (slack, SLACK ではない)
 - Qiita (qiita, QIITA ではない)
 - VS Code (vscode, vs code ではない)
-- Pinecone - ベクターデータベースプラットフォーム
+- Pinecone - ベクトルデータベースプラットフォーム
 - Backlog - プロジェクト管理ツール
 
 **日本語用語:**
