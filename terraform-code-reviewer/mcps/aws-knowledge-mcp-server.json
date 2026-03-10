@@ -1,8 +1,8 @@
 {
     "mcpServers": {
         "aws-knowledge-mcp-server": {
-            "command": "npx",
-            "args": ["mcp-remote", "https://knowledge-mcp.global.api.aws"],
+            "url": "https://knowledge-mcp.global.api.aws",
+            "type": "http",
             "autoApprove": true
         }
     }
