@@ -402,25 +402,38 @@ AWS Lambda ドキュメント 2026年1月更新
 ```console
 claude-code-plugins/
 ├── .claude-plugin/
-│   └── marketplace.json               # マーケットプレイス設定
-├── agents/
-│   ├── article-reviewer.md            # 文章校正エージェント
-│   ├── official-document-checker.md   # AWS公式ドキュメント検証エージェント
-│   ├── terraform-code-reviewer.md     # Terraformコードレビューエージェント
-│   ├── aws-cost-analyst.md            # AWSコスト分析エージェント
-│   ├── tech-docs-searcher.md          # 技術ドキュメント検索エージェント
-│   └── resources/
-│       └── terminology-standards.md   # 用語規約リソース
-├── commands/
-│   ├── document-reviewer.md           # 技術記事統合レビューコマンド
-│   └── terraform-code-reviewer.md     # Terraformコードレビューコマンド
-└── mcps/
-    ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
-    ├── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
-    ├── aws-terraform-mcp-server.json      # Terraform MCP Server
-    ├── aws-cost-explorer-mcp-server.json  # AWS Cost Explorer MCP
-    └── aws-pricing-mcp-server.json        # AWS Pricing MCP
+│   └── marketplace.json                   # マーケットプレイス設定
+├── aws-shared-mcps/                       # 共有MCPサーバー（複数プラグインが利用）
+│   └── mcps/
+│       ├── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
+│       └── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
+├── document-reviewer/                     # 技術記事レビュープラグイン
+│   ├── agents/
+│   │   ├── article-reviewer.md                # 文章校正エージェント
+│   │   ├── official-document-checker.md       # AWS公式ドキュメント検証エージェント
+│   │   └── resources/
+│   │       └── terminology-standards.md       # 用語規約リソース
+│   └── commands/
+│       └── document-reviewer.md               # 技術記事統合レビューコマンド
+├── terraform-code-reviewer/               # Terraformコードレビュープラグイン
+│   ├── agents/
+│   │   └── terraform-code-reviewer.md         # Terraformコードレビューエージェント
+│   ├── commands/
+│   │   └── terraform-code-reviewer.md         # Terraformコードレビューコマンド
+│   └── mcps/
+│       └── aws-terraform-mcp-server.json      # Terraform MCP Server（固有）
+├── aws-cost-analyst/                      # AWSコスト分析プラグイン
+│   ├── agents/
+│   │   └── aws-cost-analyst.md                # AWSコスト分析エージェント
+│   └── mcps/
+│       ├── aws-cost-explorer-mcp-server.json  # AWS Cost Explorer MCP（固有）
+│       └── aws-pricing-mcp-server.json        # AWS Pricing MCP（固有）
+└── tech-docs-searcher/                    # 技術ドキュメント検索プラグイン
+    └── agents/
+        └── tech-docs-searcher.md              # 技術ドキュメント検索エージェント
 ```
+
+> **Note:** `aws-shared-mcps` は `document-reviewer` / `tech-docs-searcher` が共通で利用する AWS MCP サーバーを提供する軽量プラグインです。これらのプラグインを使用する場合は `aws-shared-mcps` も合わせて有効化してください。
 
 ## 設定
 
