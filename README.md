@@ -402,25 +402,40 @@ AWS Lambda ドキュメント 2026年1月更新
 ```console
 claude-code-plugins/
 ├── .claude-plugin/
-│   └── marketplace.json               # マーケットプレイス設定
-├── agents/
-│   ├── article-reviewer.md            # 文章校正エージェント
-│   ├── official-document-checker.md   # AWS公式ドキュメント検証エージェント
-│   ├── terraform-code-reviewer.md     # Terraformコードレビューエージェント
-│   ├── aws-cost-analyst.md            # AWSコスト分析エージェント
-│   ├── tech-docs-searcher.md          # 技術ドキュメント検索エージェント
-│   └── resources/
-│       └── terminology-standards.md   # 用語規約リソース
-├── commands/
-│   ├── document-reviewer.md           # 技術記事統合レビューコマンド
-│   └── terraform-code-reviewer.md     # Terraformコードレビューコマンド
-└── mcps/
-    ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
-    ├── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
-    ├── aws-terraform-mcp-server.json      # Terraform MCP Server
-    ├── aws-cost-explorer-mcp-server.json  # AWS Cost Explorer MCP
-    └── aws-pricing-mcp-server.json        # AWS Pricing MCP
+│   └── marketplace.json                   # マーケットプレイス設定
+├── document-reviewer/                     # 技術記事レビュープラグイン
+│   ├── agents/
+│   │   ├── article-reviewer.md                # 文章校正エージェント
+│   │   ├── official-document-checker.md       # AWS公式ドキュメント検証エージェント
+│   │   └── resources/
+│   │       └── terminology-standards.md       # 用語規約リソース
+│   ├── commands/
+│   │   └── document-reviewer.md               # 技術記事統合レビューコマンド
+│   └── mcps/
+│       ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
+│       └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
+├── terraform-code-reviewer/               # Terraformコードレビュープラグイン
+│   ├── agents/
+│   │   └── terraform-code-reviewer.md         # Terraformコードレビューエージェント
+│   ├── commands/
+│   │   └── terraform-code-reviewer.md         # Terraformコードレビューコマンド
+│   └── mcps/
+│       └── aws-terraform-mcp-server.json      # Terraform MCP Server
+├── aws-cost-analyst/                      # AWSコスト分析プラグイン
+│   ├── agents/
+│   │   └── aws-cost-analyst.md                # AWSコスト分析エージェント
+│   └── mcps/
+│       ├── aws-cost-explorer-mcp-server.json  # AWS Cost Explorer MCP
+│       └── aws-pricing-mcp-server.json        # AWS Pricing MCP
+└── tech-docs-searcher/                    # 技術ドキュメント検索プラグイン
+    ├── agents/
+    │   └── tech-docs-searcher.md              # 技術ドキュメント検索エージェント
+    └── mcps/
+        ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
+        └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
 ```
+
+> MCP サーバーの重複（`aws-documentation-mcp-server`、`aws-knowledge-mcp-server`）は Claude Code の自動重複排除機能により、ランタイムで1インスタンスのみ起動されます。各プラグインの自己完結性を優先し、意図的に重複を許容しています。
 
 ## 設定
 
