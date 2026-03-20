@@ -27,7 +27,7 @@ npx markdownlint-cli "**/*.md" --ignore node_modules
 | `document-reviewer` | agents + command | inherit | aws-shared-mcps |
 | `terraform-code-reviewer` | agent + command | inherit | 固有 (aws-terraform-mcp-server) |
 | `aws-cost-analyst` | agent のみ | sonnet | 固有 (cost-explorer, pricing) |
-| `tech-docs-searcher` | agent のみ | sonnet | aws-shared-mcps |
+| `tech-docs-searcher` | agent のみ | sonnet | aws-shared-mcps, context7 |
 | `aws-shared-mcps` | MCP のみ | - | aws-documentation, aws-knowledge |
 
 ### ディレクトリ構造の規約
@@ -55,7 +55,7 @@ color: blue|red|green|cyan
 
 ### MCP サーバー設定のフォーマット
 
-JSON ファイルで `command`, `args`, `env` を定義。すべて `uvx` コマンドで起動する。AWS 系は `${AWS_PROFILE:-default}` と `${AWS_REGION:-us-east-1}` を環境変数から参照する。
+JSON ファイルで `command`, `args`, `env` を定義。AWS 系 MCP は `uvx` コマンドで起動し、`${AWS_PROFILE:-default}` と `${AWS_REGION:-us-east-1}` を環境変数から参照する。Context7 MCP は npm パッケージのため `npx` で起動する。
 
 ### 共有 MCP の仕組み
 

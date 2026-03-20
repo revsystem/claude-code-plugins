@@ -2,7 +2,7 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.4-orange.svg)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/version-0.0.5-orange.svg)](.claude-plugin/marketplace.json)
 
 技術記事レビュー、Terraformコードレビュー、AWSコスト分析、技術ドキュメント検索を提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビュー、AWSコスト最適化、最新技術情報の調査を組み合わせ、高品質な技術文書とインフラの作成をサポートします。
 
@@ -53,6 +53,7 @@
 #### 技術ドキュメント検索エージェント
 - **最新ドキュメント検索**: フレームワーク、ライブラリ、クラウドサービスの最新ドキュメントを検索
 - **AWS公式情報**: AWS Documentation / Knowledge MCPサーバーによる正確なAWS情報取得
+- **ライブラリドキュメント取得**: Context7 MCPサーバーによるフレームワーク・ライブラリの公式ドキュメント検索
 - **ベストプラクティス調査**: 実装パターン、推奨事項、アーキテクチャガイドを収集
 - **マルチソース検証**: 公式ドキュメント、GitHub、技術ブログから情報を収集・検証
 
@@ -65,7 +66,8 @@
 
 ### 前提条件
 - [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) がインストールされていること
-- uvxがインストールされていること
+- uvx がインストールされていること（AWS 系 MCP サーバーの起動に使用）
+- Node.js / npx がインストールされていること（tech-docs-searcher の Context7 MCP サーバーの起動に使用）
 - **aws-cost-analyst を使用する場合**: AWS CLIが設定済みで、Cost Explorer / Pricing API にアクセスできるプロファイルが必要（シェルの `AWS_PROFILE` 環境変数を自動参照）
 
 ### インストール手順
@@ -432,7 +434,8 @@ claude-code-plugins/
     │   └── tech-docs-searcher.md              # 技術ドキュメント検索エージェント
     └── mcps/
         ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
-        └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
+        ├── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
+        └── context7-mcp-server.json           # Context7 ライブラリドキュメント検索
 ```
 
 > MCP サーバーの重複（`aws-documentation-mcp-server`、`aws-knowledge-mcp-server`）は Claude Code の自動重複排除機能により、ランタイムで1インスタンスのみ起動されます。各プラグインの自己完結性を優先し、意図的に重複を許容しています。
@@ -491,8 +494,8 @@ claude-code-plugins/
 ### tech-docs-searcher
 
 #### 技術ドキュメント検索
-- フレームワーク、ライブラリの最新ドキュメント検索
-- AWS サービスの公式ドキュメント取得（MCP サーバー連携）
+- フレームワーク、ライブラリの最新ドキュメント検索（Context7 MCP 連携）
+- AWS サービスの公式ドキュメント取得（AWS Documentation / Knowledge MCP 連携）
 - GCP、Azure、SaaS 製品のドキュメント検索
 - ベストプラクティス、実装パターンの調査
 
