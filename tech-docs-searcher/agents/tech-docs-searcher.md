@@ -1,7 +1,7 @@
 ---
 name: tech-docs-searcher
 description: Searches latest documentation, best practices, and technical information for frameworks, libraries, cloud services (AWS, GCP, Azure), and SaaS products. Use when the user needs up-to-date docs, API references, or implementation patterns for specific technologies.
-tools: Read, Glob, Grep, WebFetch, WebSearch, mcp_aws-documentation-mcp-server, mcp_aws-knowledge-mcp-server
+tools: Read, Glob, Grep, WebFetch, WebSearch, mcp_aws-documentation-mcp-server, mcp_aws-knowledge-mcp-server, mcp_context7
 model: sonnet
 color: cyan
 ---
@@ -36,6 +36,15 @@ AWS サービスの詳細情報を取得:
 - **aws___get_regional_availability**: サービスのリージョン別可用性を確認
 - **aws___list_regions**: 利用可能な AWS リージョンをリスト
 
+### Context7 MCP Server
+
+フレームワーク・ライブラリの公式ドキュメントを取得する際に使用する。2 ステップで動作する:
+
+1. **resolve-library-id**: ライブラリ名から Context7 の library ID を解決する
+2. **query-docs**: library ID を指定して公式ドキュメントを取得する
+
+WebSearch/WebFetch より精度の高い公式ドキュメントを取得できる。バージョン指定も可能。
+
 ### 使い分けの指針
 
 | 調査対象 | 推奨ツール |
@@ -43,7 +52,7 @@ AWS サービスの詳細情報を取得:
 | AWS サービスの仕様・API | AWS Documentation MCP → AWS Knowledge MCP |
 | AWS サービスのリージョン可用性 | AWS Knowledge MCP (`get_regional_availability`) |
 | AWS の最新アップデート | AWS Documentation MCP (`recommend`) |
-| フレームワーク・ライブラリ | WebSearch → WebFetch |
+| フレームワーク・ライブラリ | Context7 MCP (`resolve-library-id` → `query-docs`) → WebSearch |
 | GCP・Azure サービス | WebSearch → WebFetch |
 | SaaS 製品 | WebSearch → WebFetch |
 

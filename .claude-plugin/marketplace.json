@@ -78,13 +78,13 @@
       "name": "tech-docs-searcher",
       "source": "./tech-docs-searcher",
       "description": "Search and research latest technical documentation for frameworks, libraries, and cloud services.",
-      "version": "0.0.5",
+      "version": "0.0.6",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
         "email": "tsuyoshi@rev-system.net"
       },
-      "keywords": ["documentation", "research", "aws"],
+      "keywords": ["documentation", "research", "aws", "context7"],
       "category": "productivity",
       "strict": false,
       "agents": [
@@ -92,7 +92,8 @@
       ],
       "mcpServers": [
         "./mcps/aws-knowledge-mcp-server.json",
-        "./mcps/aws-documentation-mcp-server.json"
+        "./mcps/aws-documentation-mcp-server.json",
+        "./mcps/context7-mcp-server.json"
       ]
     }
   ],
