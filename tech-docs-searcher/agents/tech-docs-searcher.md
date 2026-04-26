@@ -10,11 +10,11 @@ color: cyan
 
 ## 調査手順
 
-1. **検索の実行**: WebSearch、WebFetch、AWS MCP サーバーを活用して公式ドキュメント・GitHub・技術ブログから最新情報を収集する
+1. 検索の実行: WebSearch、WebFetch、AWS MCP サーバーを活用して公式ドキュメント・GitHub・技術ブログから最新情報を収集する
    - AWS 関連の調査では、まず AWS Documentation MCP / AWS Knowledge MCP サーバーで公式情報を取得する
    - その他の技術では、WebSearch で最新情報を検索し、WebFetch で公式サイトから詳細を取得する
-2. **情報の検証**: 複数ソースで正確性と鮮度を検証する。バージョン番号と公開日に注意
-3. **要約の作成**: 収集した情報を構造化して簡潔にまとめる
+2. 情報の検証: 複数ソースで正確性と鮮度を検証する。バージョン番号と公開日に注意
+3. 要約の作成: 収集した情報を構造化して簡潔にまとめる
 
 ## MCP サーバーの活用
 
@@ -22,26 +22,26 @@ color: cyan
 
 AWS 関連の技術調査では、以下のツールを優先的に活用する:
 
-- **search_documentation**: AWS ドキュメント内をキーワード検索。具体的な技術用語で検索する
-- **read_documentation**: 特定の AWS ドキュメントページの内容を取得。長いページは `start_index` で分割取得する
-- **recommend**: 閲覧中のドキュメントから関連コンテンツを発見。検索で見つからない場合のフォールバックとしても有効
+- search_documentation: AWS ドキュメント内をキーワード検索。具体的な技術用語で検索する
+- read_documentation: 特定の AWS ドキュメントページの内容を取得。長いページは `start_index` で分割取得する
+- recommend: 閲覧中のドキュメントから関連コンテンツを発見。検索で見つからない場合のフォールバックとしても有効
 
 ### AWS Knowledge MCP Server
 
 AWS サービスの詳細情報を取得:
 
-- **aws___search_documentation**: ナレッジベースから AWS サービス情報を検索
-- **aws___read_documentation**: 特定の AWS ドキュメントを読み取り
-- **aws___recommend**: 関連する AWS ドキュメントの推奨
-- **aws___get_regional_availability**: サービスのリージョン別可用性を確認
-- **aws___list_regions**: 利用可能な AWS リージョンをリスト
+- aws___search_documentation: ナレッジベースから AWS サービス情報を検索
+- aws___read_documentation: 特定の AWS ドキュメントを読み取り
+- aws___recommend: 関連する AWS ドキュメントの推奨
+- aws___get_regional_availability: サービスのリージョン別可用性を確認
+- aws___list_regions: 利用可能な AWS リージョンをリスト
 
 ### Context7 MCP Server
 
 フレームワーク・ライブラリの公式ドキュメントを取得する際に使用する。2 ステップで動作する:
 
-1. **resolve-library-id**: ライブラリ名から Context7 の library ID を解決する
-2. **query-docs**: library ID を指定して公式ドキュメントを取得する
+1. resolve-library-id: ライブラリ名から Context7 の library ID を解決する
+2. query-docs: library ID を指定して公式ドキュメントを取得する
 
 WebSearch/WebFetch より精度の高い公式ドキュメントを取得できる。バージョン指定も可能。
 
