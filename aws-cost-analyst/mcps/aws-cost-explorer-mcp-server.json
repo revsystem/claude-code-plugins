@@ -2,7 +2,7 @@
 	"mcpServers": {
 		"aws-cost-explorer-mcp-server": {
 			"command": "uvx",
-			"args": ["awslabs.cost-explorer-mcp-server@latest"],
+			"args": ["awslabs.billing-cost-management-mcp-server@latest"],
 			"env": {
 			"FASTMCP_LOG_LEVEL": "ERROR",
 			"AWS_PROFILE": "${AWS_PROFILE:-default}",
