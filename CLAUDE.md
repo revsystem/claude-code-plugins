@@ -26,7 +26,7 @@ npx markdownlint-cli "**/*.md" --ignore node_modules
 |-----------|------|--------|-----|
 | `document-reviewer` | agents + command | inherit | aws-shared-mcps |
 | `terraform-code-reviewer` | agent + command | inherit | 固有 (aws-terraform-mcp-server) |
-| `aws-cost-analyst` | agent のみ | sonnet | 固有 (cost-explorer, pricing) |
+| `aws-cost-analyst` | agent のみ | sonnet | 固有 (billing-cost-management, pricing) |
 | `tech-docs-searcher` | agent のみ | sonnet | aws-shared-mcps, context7 |
 | `aws-shared-mcps` | MCP のみ | - | aws-documentation, aws-knowledge |
 
