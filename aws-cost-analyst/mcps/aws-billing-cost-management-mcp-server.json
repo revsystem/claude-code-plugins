@@ -1,6 +1,6 @@
 {
 	"mcpServers": {
-		"aws-cost-explorer-mcp-server": {
+		"aws-billing-cost-management-mcp-server": {
 			"command": "uvx",
 			"args": ["awslabs.billing-cost-management-mcp-server@latest"],
 			"env": {

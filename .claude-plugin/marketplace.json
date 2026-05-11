@@ -57,7 +57,7 @@
       "name": "aws-cost-analyst",
       "source": "./aws-cost-analyst",
       "description": "AWS cost analysis, investigation, and cost optimization.",
-      "version": "0.0.4",
+      "version": "0.0.5",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -70,7 +70,7 @@
         "./agents/aws-cost-analyst.md"
       ],
       "mcpServers": [
-        "./mcps/aws-cost-explorer-mcp-server.json",
+        "./mcps/aws-billing-cost-management-mcp-server.json",
         "./mcps/aws-pricing-mcp-server.json"
       ]
     },

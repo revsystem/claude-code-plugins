@@ -155,9 +155,9 @@ cd claude-code-plugins
 
 前述の、Githubマーケットプレイスを追加する場合の手順を参照してください。
 
-### AWS_PROFILE の設定（aws-cost-explorer / aws-pricing MCPサーバー）
+### AWS_PROFILE の設定（aws-billing-cost-management / aws-pricing MCPサーバー）
 
-AWS Cost Explorer MCPサーバーと AWS Pricing MCPサーバーは AWS API にアクセスするため、`AWS_PROFILE` 環境変数の設定が必要です。
+AWS Billing Cost Management MCPサーバーと AWS Pricing MCPサーバーは AWS API にアクセスするため、`AWS_PROFILE` 環境変数の設定が必要です。
 
 MCPサーバー設定ファイルは `${AWS_PROFILE:-default}` 構文を使用しており、シェル環境の `AWS_PROFILE` を自動的に参照します。未設定の場合は AWS CLI の `default` プロファイルが使用されます。
 
@@ -174,7 +174,7 @@ export AWS_PROFILE=your-aws-profile
 
 ```text
 ~/.claude/plugins/marketplaces/document-and-code-reviewer/mcps/
-├── aws-cost-explorer-mcp-server.json
+├── aws-billing-cost-management-mcp-server.json
 └── aws-pricing-mcp-server.json
 ```
 
@@ -382,8 +382,8 @@ claude-code-plugins/
 │   ├── agents/
 │   │   └── aws-cost-analyst.md                # AWSコスト分析エージェント
 │   └── mcps/
-│       ├── aws-cost-explorer-mcp-server.json  # AWS Cost Explorer MCP
-│       └── aws-pricing-mcp-server.json        # AWS Pricing MCP
+│       ├── aws-billing-cost-management-mcp-server.json  # AWS Billing Cost Management MCP
+│       └── aws-pricing-mcp-server.json                  # AWS Pricing MCP
 └── tech-docs-searcher/                    # 技術ドキュメント検索プラグイン
     ├── agents/
     │   └── tech-docs-searcher.md              # 技術ドキュメント検索エージェント
