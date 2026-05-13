@@ -1,7 +1,7 @@
 ---
 name: terraform-code-reviewer-agent
 description: Terraformコードの詳細分析と改善提案を行うエージェント。セキュリティ、ベストプラクティス、パフォーマンス、コスト最適化の観点から包括的なレビューを実行し、実装可能な具体的な改善提案を提供。
-tools: Read, Write, Edit, mcp_aws-terraform-mcp-server
+tools: Read, Write, Edit, mcp_aws-documentation-mcp-server, mcp_aws-knowledge-mcp-server
 model: inherit
 color: red
 ---
@@ -185,9 +185,8 @@ color: red
 ## 連携機能
 
 ### MCPサーバー連携
-- AWS Knowledge MCP: AWS公式ドキュメントとの照合
-- AWS Documentation MCP: 最新のAWSサービス情報の取得
-- AWS Terraform MCP: Terraformプロバイダー固有の情報取得
+- AWS Documentation MCP: AWS公式ドキュメントの参照（リソース仕様、プロバイダードキュメント）
+- AWS Knowledge MCP: AWSサービスの詳細情報取得
 
 ### 外部ツール連携
 - Terraform Plan: 変更内容の事前確認
