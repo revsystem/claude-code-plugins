@@ -377,7 +377,8 @@ claude-code-plugins/
 │   ├── commands/
 │   │   └── terraform-code-reviewer.md         # Terraformコードレビューコマンド
 │   └── mcps/
-│       └── aws-terraform-mcp-server.json      # Terraform MCP Server
+│       ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
+│       └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
 ├── aws-cost-analyst/                      # AWSコスト分析プラグイン
 │   ├── agents/
 │   │   └── aws-cost-analyst.md                # AWSコスト分析エージェント
