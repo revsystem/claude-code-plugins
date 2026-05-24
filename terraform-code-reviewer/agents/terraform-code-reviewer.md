@@ -1,7 +1,11 @@
 ---
 name: terraform-code-reviewer-agent
-description: Terraformコードの詳細分析と改善提案を行うエージェント。セキュリティ、ベストプラクティス、パフォーマンス、コスト最適化の観点から包括的なレビューを実行し、実装可能な具体的な改善提案を提供。
-tools: Read, Write, Edit, mcp_aws-documentation-mcp-server, mcp_aws-knowledge-mcp-server
+description: >
+  Terraform コード（.tf）のレビューが必要なとき（.tf ファイルの確認依頼、
+  セキュリティ・ベストプラクティス・パフォーマンス・コスト最適化の検証など）
+  に自律的に呼び出されるエージェント。読み取り専用で分析し、優先度別の改善提案を
+  コード例付きで返す。ファイルは修正せず、提案の適用は呼び出し元のセッションが行う。
+disallowedTools: Write, Edit
 model: inherit
 color: red
 ---

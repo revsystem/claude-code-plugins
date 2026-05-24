@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.6] - 2026-05-25
+
+### Fixed
+- **Agent MCP tool grants**: Replaced the invalid single-underscore MCP identifiers (`mcp_<server>`) in agent `tools` fields, which did not match Claude Code's `mcp__<server>` naming and likely blocked MCP access. Agents now use the documented `disallowedTools: Write, Edit` denylist so they reliably inherit their plugin MCP servers (aws-cost-analyst, official-document-checker, terraform-code-reviewer, tech-docs-searcher).
+- **aws-cost-analyst MCP reference**: Corrected the agent prompt from the removed `awslabs.cost-explorer-mcp-server` to the configured `awslabs.billing-cost-management-mcp-server`, including its actual tool names (cost-explorer, cost-comparison, cost-anomaly, etc.)
+
+### Changed
+- **Read-only reviewers**: Enforced read-only behavior by denying Write/Edit for terraform-code-reviewer, official-document-checker, and tech-docs-searcher, and restricting article-reviewer to `Read, Grep, Glob`. Reviewers now propose changes; the calling session applies them.
+- **Agent descriptions**: Rewrote descriptions to trigger-condition style for more reliable automatic delegation.
+- **document-reviewer orchestration**: Clarified that the two subagents run in parallel from a single message and do not communicate directly.
+
+## [0.0.5] - 2026-05-14
+
+### Fixed
+- **terraform-code-reviewer MCP migration**: Migrated from the yanked `awslabs` Terraform MCP server to the AWS Documentation / Knowledge MCP servers.
+
 ## [0.0.4] - 2026-02-11
 
 ### Added
@@ -79,6 +95,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - aws-documentation-mcp-server for official AWS documentation access
 - Initial project structure and documentation
 
+[0.0.6]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.5...v0.0.6
+[0.0.5]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.1...v0.0.2

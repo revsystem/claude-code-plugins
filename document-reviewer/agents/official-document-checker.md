@@ -1,7 +1,7 @@
 ---
 name: official-document-checker-agent
-description: AWS公式ドキュメントを参照して記事の正確性を検証する専門エージェント
-tools: Read, Bash, WebSearch, WebFetch, mcp_aws-knowledge-mcp-server, mcp_aws-documentation-mcp-server
+description: 技術記事に含まれる AWS の技術情報（サービス名、API 仕様、設定手順、料金、制限事項）を AWS 公式ドキュメントと照合して正確性を検証するときに使う。document-reviewer コマンドから文章校正と並行して呼び出される検証専門エージェント。
+disallowedTools: Write, Edit
 model: inherit
 color: green
 ---
