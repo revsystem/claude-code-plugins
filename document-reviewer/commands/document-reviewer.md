@@ -17,8 +17,10 @@ model: inherit
 - レビューの優先順位を決定
 
 ### フェーズ2: 並行レビュー実行
-- 文章校正: `article-reviewer-agent`が文章品質、構成、可読性を検証
-- 技術検証: `official-document-checker-agent`がAWS公式ドキュメントと照合
+2 つのエージェントは独立して動作し相互通信しないため、単一メッセージで同時に呼び出して並行実行する。
+
+- 文章校正: `article-reviewer-agent`が文章品質、構成、可読性を検証し、優先度別の修正案を返す
+- 技術検証: `official-document-checker-agent`がAWS公式ドキュメントと照合し、優先度別の指摘と参照先URLを返す
 
 ### フェーズ3: 結果統合
 - 両エージェントの結果を統合
