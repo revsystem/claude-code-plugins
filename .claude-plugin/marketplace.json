@@ -34,7 +34,7 @@
       "name": "terraform-code-reviewer",
       "source": "./terraform-code-reviewer",
       "description": "Review Terraform code.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -100,6 +100,6 @@
   ],
   "metadata": {
     "description": "Provide plugins for reviewing documents, code, cost analysis, and technical documentation search with AWS integration.",
-    "version": "0.0.6"
+    "version": "0.0.7"
   }
 }
