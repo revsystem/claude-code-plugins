@@ -2,7 +2,7 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.7-orange.svg)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/version-0.0.8-orange.svg)](.claude-plugin/marketplace.json)
 
 技術記事レビュー、Terraformコードレビュー、AWSコスト分析、技術ドキュメント検索を提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビュー、AWSコスト最適化、最新技術情報の調査を組み合わせ、高品質な技術文書とインフラの作成をサポートします。
 
@@ -381,7 +381,6 @@ claude-code-plugins/
 │   ├── commands/
 │   │   └── terraform-code-reviewer.md         # Terraformコードレビューコマンド
 │   └── mcps/
-│       ├── aws-documentation-mcp-server.json  # AWS公式ドキュメント検索
 │       └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
 ├── aws-cost-analyst/                      # AWSコスト分析プラグイン
 │   ├── agents/
