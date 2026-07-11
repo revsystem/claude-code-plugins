@@ -24,8 +24,8 @@ npx markdownlint-cli "**/*.md" --ignore node_modules
 
 | プラグイン | 種別 | モデル | MCP |
 |-----------|------|--------|-----|
-| `document-reviewer` | agents + command | inherit | 固有 (aws-documentation, aws-knowledge) |
-| `terraform-code-reviewer` | agent + command | sonnet | 固有 (aws-documentation, aws-knowledge) |
+| `document-reviewer` | agents + command | inherit | 固有 (aws-knowledge) |
+| `terraform-code-reviewer` | agent + command | sonnet | 固有 (aws-knowledge) |
 | `aws-cost-analyst` | agent のみ | sonnet | 固有 (billing-cost-management, pricing) |
 
 ### ディレクトリ構造の規約
