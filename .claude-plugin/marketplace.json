@@ -9,7 +9,7 @@
       "name": "document-reviewer",
       "source": "./document-reviewer",
       "description": "Review blog articles with terminology standards and AWS documentation verification.",
-      "version": "0.0.5",
+      "version": "0.0.6",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -26,15 +26,14 @@
         "./agents/official-document-checker.md"
       ],
       "mcpServers": [
-        "./mcps/aws-knowledge-mcp-server.json",
-        "./mcps/aws-documentation-mcp-server.json"
+        "./mcps/aws-knowledge-mcp-server.json"
       ]
     },
     {
       "name": "terraform-code-reviewer",
       "source": "./terraform-code-reviewer",
       "description": "Review Terraform code.",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -50,7 +49,6 @@
         "./agents/terraform-code-reviewer.md"
       ],
       "mcpServers": [
-        "./mcps/aws-documentation-mcp-server.json",
         "./mcps/aws-knowledge-mcp-server.json"
       ]
     },
@@ -78,6 +76,6 @@
   ],
   "metadata": {
     "description": "Provide plugins for reviewing documents, code, and cost analysis with AWS integration.",
-    "version": "0.0.8"
+    "version": "0.0.10"
   }
 }

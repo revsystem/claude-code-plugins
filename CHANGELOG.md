@@ -5,10 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.8] - 2026-07-11
+## [0.0.10] - 2026-07-11
 
 ### Removed
 - **tech-docs-searcher plugin**: Removed the plugin entirely (agent, MCP server configs, and its marketplace.json entry). Its bundled Context7 MCP server fully duplicated the official `context7` plugin, resulting in two `npx` processes when both were enabled; its agent prompt referenced `aws___recommend`, a tool that does not exist on `aws-knowledge-mcp-server`; and its documentation-search functionality is fully covered by the official `context7` plugin combined with `aws-documentation-mcp-server` and WebSearch. The plugin was already disabled in practice, so this removes dead weight rather than an in-use capability.
+
+## [0.0.9] - 2026-07-11
+
+### Removed
+- **terraform-code-reviewer: dropped aws-documentation-mcp-server**: The agent only needs official-doc lookups and URL citation (`search_documentation` / `read_documentation`), which `aws-knowledge-mcp-server` already covers with better filtering (`topics=reference_documentation`) and broader sources (CDK / constructs.dev). `aws-documentation-mcp-server`'s distinguishing tools (`read_sections`, `recommend`) were unused by this agent, so the dependency was removed from `mcpServers` and the agent prompt now references only `aws-knowledge-mcp-server`. Bumped terraform-code-reviewer to 0.1.3.
+
+## [0.0.8] - 2026-07-11
+
+### Removed
+- **document-reviewer: dropped aws-documentation-mcp-server**: The plugin's `official-document-checker-agent` verifies article content against AWS documentation using only `search_documentation` / `read_documentation`, both of which `aws-knowledge-mcp-server` already provides (with topic filtering and broader sources such as re:Post, Amplify, and CDK samples). `aws-documentation-mcp-server`'s distinguishing tools, `read_sections` and `recommend`, are unused by this agent, so the dependency was removed with no loss of capability.
 
 ## [0.0.7] - 2026-07-07
 
