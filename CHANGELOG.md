@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.8] - 2026-07-11
+
+### Removed
+- **document-reviewer: dropped aws-documentation-mcp-server**: The plugin's `official-document-checker-agent` verifies article content against AWS documentation using only `search_documentation` / `read_documentation`, both of which `aws-knowledge-mcp-server` already provides (with topic filtering and broader sources such as re:Post, Amplify, and CDK samples). `aws-documentation-mcp-server`'s distinguishing tools, `read_sections` and `recommend`, are unused by this agent, so the dependency was removed with no loss of capability.
+
 ## [0.0.7] - 2026-07-07
 
 ### Changed
