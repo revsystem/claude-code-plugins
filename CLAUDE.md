@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Claude Code Plugins のマーケットプレイスリポジトリ。技術記事レビュー、Terraformコードレビュー、AWSコスト分析、技術ドキュメント検索の4つのプラグインと、共有MCPサーバーを提供する。
+Claude Code Plugins のマーケットプレイスリポジトリ。技術記事レビュー、Terraformコードレビュー、AWSコスト分析の3つのプラグインを提供する。
 
 ## Lint
 
@@ -24,11 +24,9 @@ npx markdownlint-cli "**/*.md" --ignore node_modules
 
 | プラグイン | 種別 | モデル | MCP |
 |-----------|------|--------|-----|
-| `document-reviewer` | agents + command | inherit | aws-shared-mcps |
+| `document-reviewer` | agents + command | inherit | 固有 (aws-documentation, aws-knowledge) |
 | `terraform-code-reviewer` | agent + command | sonnet | 固有 (aws-documentation, aws-knowledge) |
 | `aws-cost-analyst` | agent のみ | sonnet | 固有 (billing-cost-management, pricing) |
-| `tech-docs-searcher` | agent のみ | sonnet | aws-shared-mcps, context7 |
-| `aws-shared-mcps` | MCP のみ | - | aws-documentation, aws-knowledge |
 
 ### ディレクトリ構造の規約
 
@@ -55,11 +53,7 @@ color: blue|red|green|cyan
 
 ### MCP サーバー設定のフォーマット
 
-JSON ファイルで `command`, `args`, `env` を定義。AWS 系 MCP は `uvx` コマンドで起動し、`${AWS_PROFILE:-default}` と `${AWS_REGION:-us-east-1}` を環境変数から参照する。Context7 MCP は npm パッケージのため `npx` で起動する。
-
-### 共有 MCP の仕組み
-
-`aws-shared-mcps` は `document-reviewer` と `tech-docs-searcher` が共通で利用する AWS Documentation / Knowledge MCP サーバーを集約したプラグイン。個別プラグインから MCP 定義を削除し、依存先として参照する設計。
+JSON ファイルで `command`, `args`, `env` を定義。AWS 系 MCP は `uvx` コマンドで起動し、`${AWS_PROFILE:-default}` と `${AWS_REGION:-us-east-1}` を環境変数から参照する。
 
 ## Conventions
 
