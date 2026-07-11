@@ -33,7 +33,7 @@
       "name": "terraform-code-reviewer",
       "source": "./terraform-code-reviewer",
       "description": "Review Terraform code.",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -49,7 +49,6 @@
         "./agents/terraform-code-reviewer.md"
       ],
       "mcpServers": [
-        "./mcps/aws-documentation-mcp-server.json",
         "./mcps/aws-knowledge-mcp-server.json"
       ]
     },
@@ -99,6 +98,6 @@
   ],
   "metadata": {
     "description": "Provide plugins for reviewing documents, code, cost analysis, and technical documentation search with AWS integration.",
-    "version": "0.0.8"
+    "version": "0.0.9"
   }
 }

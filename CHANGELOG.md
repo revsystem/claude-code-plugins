@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.9] - 2026-07-11
+
+### Removed
+- **terraform-code-reviewer: dropped aws-documentation-mcp-server**: The agent only needs official-doc lookups and URL citation (`search_documentation` / `read_documentation`), which `aws-knowledge-mcp-server` already covers with better filtering (`topics=reference_documentation`) and broader sources (CDK / constructs.dev). `aws-documentation-mcp-server`'s distinguishing tools (`read_sections`, `recommend`) were unused by this agent, so the dependency was removed from `mcpServers` and the agent prompt now references only `aws-knowledge-mcp-server`. Bumped terraform-code-reviewer to 0.1.3.
+
 ## [0.0.8] - 2026-07-11
 
 ### Removed
