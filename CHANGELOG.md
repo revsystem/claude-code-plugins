@@ -116,6 +116,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - aws-documentation-mcp-server for official AWS documentation access
 - Initial project structure and documentation
 
+[0.0.10]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.9...v0.0.10
+[0.0.9]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.8...v0.0.9
+[0.0.8]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.7...v0.0.8
+[0.0.7]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.3...v0.0.4
