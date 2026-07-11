@@ -74,32 +74,10 @@
         "./mcps/aws-billing-cost-management-mcp-server.json",
         "./mcps/aws-pricing-mcp-server.json"
       ]
-    },
-    {
-      "name": "tech-docs-searcher",
-      "source": "./tech-docs-searcher",
-      "description": "Search and research latest technical documentation for frameworks, libraries, and cloud services.",
-      "version": "0.0.7",
-      "license": "MIT",
-      "author": {
-        "name": "@revsystem",
-        "email": "tsuyoshi@rev-system.net"
-      },
-      "keywords": ["documentation", "research", "aws", "context7"],
-      "category": "productivity",
-      "strict": false,
-      "agents": [
-        "./agents/tech-docs-searcher.md"
-      ],
-      "mcpServers": [
-        "./mcps/aws-knowledge-mcp-server.json",
-        "./mcps/aws-documentation-mcp-server.json",
-        "./mcps/context7-mcp-server.json"
-      ]
     }
   ],
   "metadata": {
-    "description": "Provide plugins for reviewing documents, code, cost analysis, and technical documentation search with AWS integration.",
-    "version": "0.0.7"
+    "description": "Provide plugins for reviewing documents, code, and cost analysis with AWS integration.",
+    "version": "0.0.8"
   }
 }
