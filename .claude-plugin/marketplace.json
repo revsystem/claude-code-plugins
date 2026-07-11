@@ -9,7 +9,7 @@
       "name": "document-reviewer",
       "source": "./document-reviewer",
       "description": "Review blog articles with terminology standards and AWS documentation verification.",
-      "version": "0.0.5",
+      "version": "0.0.6",
       "license": "MIT",
       "author": {
         "name": "@revsystem",
@@ -26,8 +26,7 @@
         "./agents/official-document-checker.md"
       ],
       "mcpServers": [
-        "./mcps/aws-knowledge-mcp-server.json",
-        "./mcps/aws-documentation-mcp-server.json"
+        "./mcps/aws-knowledge-mcp-server.json"
       ]
     },
     {
@@ -100,6 +99,6 @@
   ],
   "metadata": {
     "description": "Provide plugins for reviewing documents, code, cost analysis, and technical documentation search with AWS integration.",
-    "version": "0.0.7"
+    "version": "0.0.8"
   }
 }
