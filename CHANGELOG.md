@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.11] - 2026-07-26
+
+### Removed
+- **aws-cost-analyst plugin**: Removed the plugin entirely (agent, MCP server configs, and its marketplace.json entry). The plugin held no proprietary logic — it was two official AWS Labs MCP servers (`awslabs.billing-cost-management-mcp-server`, `awslabs.aws-pricing-mcp-server`) wrapped in a 152-line agent prompt. AWS now ships the same capability officially: the `aws-core` plugin from the `agent-toolkit-for-aws` marketplace bundles the remote `aws-mcp` server (`call_aws` / `run_script` reach Cost Explorer, Pricing, Compute Optimizer, and Budgets through standard AWS CLI syntax) together with the `aws-billing-and-cost-management` skill, which covers Savings Plans and RI evaluation, right-sizing, CUR/Athena, anomaly detection, and Free Tier across 15 reference documents. Keeping the wrapper only cost maintenance: the upstream `awslabs.cost-explorer-mcp-server` package was yanked from PyPI, the agent's MCP tool identifiers were invalid, and its prompt body drifted from the configured server and tool names. Users should install `aws-core@agent-toolkit-for-aws` instead. Note that `analyze_terraform_project` has no direct equivalent — Terraform cost estimation now means reading the `.tf` files and pricing each resource through `call_aws`.
+
 ## [0.0.10] - 2026-07-11
 
 ### Removed
@@ -116,6 +121,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - aws-documentation-mcp-server for official AWS documentation access
 - Initial project structure and documentation
 
+[0.0.11]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.10...v0.0.11
 [0.0.10]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.9...v0.0.10
 [0.0.9]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.8...v0.0.9
 [0.0.8]: https://github.com/revsystem/claude-code-plugins/compare/v0.0.7...v0.0.8

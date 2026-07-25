@@ -2,9 +2,9 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugins-blue)](https://docs.claude.com/en/docs/claude-code/plugins)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.0.10-orange.svg)](.claude-plugin/marketplace.json)
+[![Version](https://img.shields.io/badge/version-0.0.11-orange.svg)](.claude-plugin/marketplace.json)
 
-技術記事レビュー、Terraformコードレビュー、AWSコスト分析を提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビュー、AWSコスト最適化を組み合わせ、高品質な技術文書とインフラの作成をサポートします。
+技術記事レビューとTerraformコードレビューを提供するClaude Code Pluginsです。文章校正、AWS公式ドキュメント検証、Terraformコードレビューを組み合わせ、高品質な技術文書とインフラの作成をサポートします。
 
 ## プラグイン一覧
 
@@ -12,7 +12,6 @@
 |-----------|------|--------|-------|
 | `document-reviewer` | 技術記事の文章校正とAWS公式ドキュメント検証 | `/document-reviewer @article.md` | inherit |
 | `terraform-code-reviewer` | Terraformコードのセキュリティ・コスト・ベストプラクティスレビュー | `/terraform-code-reviewer` | sonnet |
-| `aws-cost-analyst` | AWSコスト分析・異常調査・最適化提案 | エージェント（自然言語） | sonnet |
 
 `inherit` は Claude Code の実行モデルを継承します。`sonnet` はコスト効率を考慮した明示指定です。
 
@@ -20,8 +19,6 @@
 
 ### 前提条件
 - [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) がインストールされていること
-- uvx がインストールされていること（AWS 系 MCP サーバーの起動に使用）
-- **aws-cost-analyst を使用する場合**: AWS CLIが設定済みで、Cost Explorer / Pricing API にアクセスできるプロファイルが必要（シェルの `AWS_PROFILE` 環境変数を自動参照）
 
 ### インストール手順
 
@@ -47,12 +44,6 @@
 /plugin install terraform-code-reviewer@document-and-code-reviewer
 ```
 
-**AWSコスト分析プラグイン**
-
-```bash
-/plugin install aws-cost-analyst@document-and-code-reviewer
-```
-
 3. **プラグインを有効化する**
 
 ```bash
@@ -67,7 +58,7 @@
 │ Select a marketplace to manage plugins:                  │
 │                                                          │
 │ ❯ document-and-code-reviewer                             │
-│   3 plugins installed · 3 disabled                       │
+│   2 plugins installed · 2 disabled                       │
 ╰─────────────────────────────╯
 ```
 
@@ -82,9 +73,6 @@
 │                                                          │
 │   ◯ terraform-code-reviewer                             │
 │     Review Terraform code. · v0.0.4                      │
-│                                                          │
-│   ◯ aws-cost-analyst                                    │
-│     AWS cost analysis. · v0.0.4                          │
 ╰─────────────────────────────╯
 ```
 
@@ -128,38 +116,9 @@ cd claude-code-plugins
 /plugin install terraform-code-reviewer@document-and-code-reviewer
 ```
 
-**AWSコスト分析プラグイン**
-
-```bash
-/plugin install aws-cost-analyst@document-and-code-reviewer
-```
-
 4. **プラグインを有効化する**
 
 前述の、Githubマーケットプレイスを追加する場合の手順を参照してください。
-
-### AWS_PROFILE の設定（aws-billing-cost-management / aws-pricing MCPサーバー）
-
-AWS Billing Cost Management MCPサーバーと AWS Pricing MCPサーバーは AWS API にアクセスするため、`AWS_PROFILE` 環境変数の設定が必要です。
-
-MCPサーバー設定ファイルは `${AWS_PROFILE:-default}` 構文を使用しており、シェル環境の `AWS_PROFILE` を自動的に参照します。未設定の場合は AWS CLI の `default` プロファイルが使用されます。
-
-**シェルで環境変数を設定する**
-
-```bash
-# ~/.bashrc や ~/.zshrc に追加
-export AWS_PROFILE=your-aws-profile
-```
-
-設定するプロファイルには、Cost Explorer API と Pricing API へのアクセス権限が必要です。
-
-**MCPサーバー設定ファイルの場所**（直接編集する場合）
-
-```text
-~/.claude/plugins/marketplaces/document-and-code-reviewer/mcps/
-├── aws-billing-cost-management-mcp-server.json
-└── aws-pricing-mcp-server.json
-```
 
 ## 使用方法
 
@@ -213,21 +172,6 @@ export AWS_PROFILE=your-aws-profile
 /terraform-code-reviewer --level strict Terraformのコードをレビューして。ALBのセキュリティレベルを向上させたい。
 ```
 
-### 3. aws-cost-analyst - AWSコスト分析
-
-aws-cost-analyst はコマンドではなくエージェントとして動作します。自然言語でコスト分析を依頼してください。
-
-```bash
-# 既存リソースのコスト分析
-先月のAWSコストを分析して、サービス別の内訳を教えて。
-
-# 異常コストの調査
-今月のAWSコストが急増している原因を調べて。
-
-# コスト最適化の提案
-AWSコストの最適化ポイントを特定して、削減額を試算して。
-```
-
 ### 出力例
 
 #### document-reviewer の出力例
@@ -279,30 +223,6 @@ AWSコストの最適化ポイントを特定して、削減額を試算して�
 参照: https://docs.aws.amazon.com/ec2/latest/instancetypes/gp.html
 ```
 
-#### aws-cost-analyst の出力例
-
-```text
-📊 コスト分析サマリー
-- 分析期間: 2026-01-01 〜 2026-01-31
-- 総コスト: $3,245.67
-- 前月比: +12.3%
-
-## サービス別コスト内訳
-| サービス       | コスト     | 割合  | 前月比  |
-|---------------|-----------|-------|--------|
-| Amazon EC2    | $1,523.45 | 46.9% | +8.2%  |
-| Amazon RDS    | $867.23   | 26.7% | +15.1% |
-| Amazon S3     | $234.56   | 7.2%  | +3.4%  |
-| その他         | $620.43   | 19.1% | +18.7% |
-
-## コスト最適化の推奨事項
-| 推奨事項                          | 推定削減額  | 難易度 | 優先度 |
-|----------------------------------|-----------|--------|--------|
-| EC2 Savings Plans 適用            | $380/月   | 低     | 高     |
-| 未使用EBSボリューム削除             | $45/月    | 低     | 高     |
-| RDS インスタンスサイズの見直し       | $120/月   | 中     | 中     |
-```
-
 ## アーキテクチャ
 
 ### プラグイン構成
@@ -321,19 +241,13 @@ claude-code-plugins/
 │   │   └── document-reviewer.md               # 技術記事統合レビューコマンド
 │   └── mcps/
 │       └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
-├── terraform-code-reviewer/               # Terraformコードレビュープラグイン
-│   ├── agents/
-│   │   └── terraform-code-reviewer.md         # Terraformコードレビューエージェント
-│   ├── commands/
-│   │   └── terraform-code-reviewer.md         # Terraformコードレビューコマンド
-│   └── mcps/
-│       └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
-└── aws-cost-analyst/                      # AWSコスト分析プラグイン
+└── terraform-code-reviewer/               # Terraformコードレビュープラグイン
     ├── agents/
-    │   └── aws-cost-analyst.md                # AWSコスト分析エージェント
+    │   └── terraform-code-reviewer.md         # Terraformコードレビューエージェント
+    ├── commands/
+    │   └── terraform-code-reviewer.md         # Terraformコードレビューコマンド
     └── mcps/
-        ├── aws-billing-cost-management-mcp-server.json  # AWS Billing Cost Management MCP
-        └── aws-pricing-mcp-server.json                  # AWS Pricing MCP
+        └── aws-knowledge-mcp-server.json      # AWSナレッジベース検索
 ```
 
 > MCP サーバーの重複（`aws-knowledge-mcp-server`）は Claude Code の自動重複排除機能により、ランタイムで1インスタンスのみ起動されます。各プラグインの自己完結性を優先し、意図的に重複を許容しています。
@@ -353,7 +267,6 @@ claude-code-plugins/
 - `agents/article-reviewer.md`: 文章校正ルールの調整
 - `agents/official-document-checker.md`: 技術検証ルールの調整
 - `agents/terraform-code-reviewer.md`: Terraformコードレビュールールの調整
-- `agents/aws-cost-analyst.md`: AWSコスト分析ルールの調整
 - `agents/resources/terminology-standards.md`: 用語規約の調整
 
 ## ライセンス
