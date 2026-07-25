@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Claude Code Plugins のマーケットプレイスリポジトリ。技術記事レビュー、Terraformコードレビュー、AWSコスト分析の3つのプラグインを提供する。
+Claude Code Plugins のマーケットプレイスリポジトリ。技術記事レビューとTerraformコードレビューの2つのプラグインを提供する。
 
 ## Lint
 
@@ -20,47 +20,19 @@ npx markdownlint-cli "**/*.md" --ignore node_modules
 
 `.claude-plugin/marketplace.json` が全プラグインの定義を管理する中央レジストリ。各プラグインは独立したディレクトリに分離されている。
 
-### プラグイン一覧
-
-| プラグイン | 種別 | モデル | MCP |
-|-----------|------|--------|-----|
-| `document-reviewer` | agents + command | inherit | 固有 (aws-knowledge) |
-| `terraform-code-reviewer` | agent + command | sonnet | 固有 (aws-knowledge) |
-| `aws-cost-analyst` | agent のみ | sonnet | 固有 (billing-cost-management, pricing) |
-
-### ディレクトリ構造の規約
-
-各プラグインは `source` で指定されたディレクトリに以下のサブディレクトリを持つ:
-
-- `agents/` - エージェント定義 (Markdown + YAML frontmatter)
-- `commands/` - スラッシュコマンド定義 (Markdown)
-- `mcps/` - MCP サーバー設定 (JSON)
-- `agents/resources/` - エージェントが参照するリソースファイル
-
 ### エージェント定義のフォーマット
-
-```yaml
----
-name: agent-name
-description: 説明文
-tools: Read, Write, Edit, mcp_server-name
-model: inherit|sonnet
-color: blue|red|green|cyan
----
-```
 
 `inherit` は Claude Code の実行モデルを継承し、`sonnet` はコスト効率のため明示指定。
 
 ### MCP サーバー設定のフォーマット
 
-JSON ファイルで `command`, `args`, `env` を定義。AWS 系 MCP は `uvx` コマンドで起動し、`${AWS_PROFILE:-default}` と `${AWS_REGION:-us-east-1}` を環境変数から参照する。
+JSON ファイルで MCP サーバーを定義する。現在使用している `aws-knowledge-mcp-server` はリモート HTTP サーバーで、`url` と `type` のみを指定し認証情報を必要としない。
 
 ## Conventions
 
 - プラグインのバージョンは `marketplace.json` と `README.md` の両方で管理する
 - コミットメッセージは Conventional Commits (feat:, fix:, docs:, refactor:, chore:) を英語で記述
 - 用語の統一基準は `document-reviewer/agents/resources/terminology-standards.md` に定義
-- マーケットプレイス名は `document-and-code-reviewer` (レジストリ上の名前)
 
 ### command と agent の責務分離
 
