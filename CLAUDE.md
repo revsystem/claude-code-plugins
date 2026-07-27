@@ -41,3 +41,12 @@ JSON ファイルで MCP サーバーを定義する。現在使用している 
 - command に agent の内容を要約して埋め込まない
 - 複数 agent を持つ場合のみ、command にオーケストレーション（並行実行、結果統合）を含める
 - 詳細は `.claude/docs/plans/2026-03-16-deduplicate-plugin-command-agent-plan.md` を参照
+
+### プラグインの廃止手順
+
+marketplace.json からエントリを削除しても、インストール済み環境からは消えない。`~/.claude/settings.json` の有効化フラグ、`installed_plugins.json` のエントリ、`~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/` の実体が残り、MCP サーバーも起動し続ける。
+
+1. marketplace.json のエントリ削除と `metadata.version` のバンプ、README・CHANGELOG の更新
+2. CHANGELOG に移行先を明記する（利用者には警告なしにプラグインが消えるため）
+3. マージ後に `/plugin uninstall <plugin>@<marketplace>` を実行する
+4. `~/.claude/plugins/cache/` の残骸を手動削除する。`.orphaned_at` による GC 機構はあるが、孤立から14日経っても削除されない実績がある
